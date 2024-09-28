@@ -46,7 +46,7 @@ const Login = () => {
     const { uid, email, displayName } = userData;
 
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch('https://server-jt5f.onrender.com/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

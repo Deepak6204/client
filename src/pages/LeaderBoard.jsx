@@ -64,7 +64,7 @@ const LeaderBoard = () => {
   };
   // Fetch users when the component is mounted
   useEffect(() => {
-    fetch('http://localhost:5000/get_users')  // Replace <PORT> with your backend port
+    fetch('https://server-jt5f.onrender.com/get_users')  // Replace <PORT> with your backend port
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch users');

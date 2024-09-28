@@ -573,7 +573,7 @@ function Event() {
 
   const handleRoundSelection  = async (round) => {
     const firebaseId = localStorage.getItem('firebaseId')
-    const response = await fetch('http://localhost:5000/is_eligible', {
+    const response = await fetch('https://server-jt5f.onrender.com/is_eligible', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
