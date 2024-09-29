@@ -538,10 +538,18 @@ const rules = {
   round2: [
     "1. In this round you have 5 Question.",
     "2. For that you have 20 Minutes",
+    "3. For each snippet, tick the line where you identify a bug.",
+    "4. Bug can be a syntax or logical error.",
+    "5. You can jump between questions freely within the time frame.",
+    "6. Once you start, fullscreen mode will activate, and you can't exit without submission.",
   ],
   round3: [
     "1. In this round you have 2 Question.",
     "2. For that you have 10 Minutes",
+    "3. For each snippet, tick the line where you identify a bug.",
+    "4. Bug can be a syntax or logical error.",
+    "5. You can jump between questions freely within the time frame.",
+    "6. Once you start, fullscreen mode will activate, and you can't exit without submission.",
   ],
 };
 function Event() {
@@ -624,7 +632,7 @@ function Event() {
 
       const result = await response.json();
       console.log("Server response:", result);
-      alert(`You selected bugs on lines: ${result.selectedBugs.join(", ")}`);
+      // alert(`You selected bugs on lines: ${result.selectedBugs.join(", ")}`);
       handleAnswer(selectedQuestion.id)
     } catch (error) {
       console.error('Error:', error);
@@ -641,7 +649,7 @@ function Event() {
     <>
       <div className="app-container">
         {!selectedRound ? (
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", margin:"auto"}}>
             <div className="side-design">
               <div className="circle" />
               <div className="line" />
@@ -684,7 +692,7 @@ function Event() {
             </div>
           </div>
         ) : (
-          <div>
+          <div style={{margin: "auto"}}>
             {showRules ? (
               <div
                 style={{
@@ -786,8 +794,9 @@ function Event() {
                       ))}
                     </div>
                     <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft)}>
-                      Submit
+                      Save & Next
                     </button>
+                    <div><button className="submit-button">Submit</button></div>
                   </div>
                 )}
               </div>

@@ -72,10 +72,10 @@ const Navbar = () => {
           {/* <FaUser style={{ marginBottom: "6px" }} /> */}
           {isLogged ? (
             <div>
-              <li className='navbar-login' onClick={handleLogout}><RiLogoutCircleLine style={{fontSize : '1.8rem'}} /></li>
+              <li className='navbar-login' onClick={handleLogout}>LOGOUT</li>
             </div>
           ) : (
-            <li onClick={handleLogin}><RiLoginCircleLine style={{fontSize : '1.8rem'}} /></li>
+            <li className='navbar-login' onClick={handleLogin}>LOGIN</li>
           )}
         </li>
       </ul>
