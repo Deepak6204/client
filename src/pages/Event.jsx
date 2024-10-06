@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import "./css/event.css";
 import BugBounty from "../images/Bug-Bounty.webp";
+import { useNavigate } from 'react-router-dom';
+
+
 
 const questions = {
   round1: {
@@ -644,6 +645,17 @@ function Event() {
       setSelectedQuestion(questions[selectedRound][language][selectedQuestion.id]);
       setSelectedBugs([]);
   };
+  const navigate =  useNavigate();
+
+  const handleFinalSubmit = (e) => {
+    e.preventDefault();
+    const result = window.confirm("Are you sure want to submit?");
+
+    if(result) {
+      navigate('/leaderboard');
+    } else {
+    }
+  }
 
   return (
     <>
@@ -796,7 +808,7 @@ function Event() {
                     <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft)}>
                       Save & Next
                     </button>
-                    <div><button className="submit-button">Submit</button></div>
+                    <div><button className="submit-button" onClick={handleFinalSubmit} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
                   </div>
                 )}
               </div>

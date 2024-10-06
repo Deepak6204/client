@@ -29,7 +29,8 @@ const LeaderBoard = () => {
   const [loading, setLoading] = useState(true);  // State to show loading
   const [error, setError] = useState(null);  // State to handle any errors
   const [round, setRound] = useState(1); // Default round is 1
-  
+  const [selectedRound, setSelectedRound] = useState(1);
+
   const compareUsersForRound = (round) => (a, b) => {
     const scoreA = a.scores?.[`round${round}`]?.score;
     const scoreB = b.scores?.[`round${round}`]?.score;
@@ -97,10 +98,22 @@ const LeaderBoard = () => {
     <>
        <Navbar/>
       <div className="leaderboard_container">
-      <div className="leaderboard_main_heading">
-        <button onClick={()=>setRound(1)}>Round-1</button>
-        <button onClick={()=>setRound(2)}>Round-2</button>
-        <button onClick={()=>setRound(3)}>Round-3</button>
+      <div className="leaderboard_main_heading leaderboard-button">
+        <button 
+          className={round === 1 ? "active" : ""}
+          onClick={()=>setRound(1)}>
+            Round-1
+        </button>
+        <button 
+          className={round === 2 ? "active" : ""}
+          onClick={()=>setRound(2)}>
+            Round-2
+        </button>
+        <button 
+          className={round === 3 ? "active" : ""}
+          onClick={()=>setRound(3)}>
+            Round-3
+          </button>
       </div>
 
       <div className="leaderboard_heading">
