@@ -342,7 +342,7 @@
     position: absolute;
     left: 24px;
     width: 3px;
-    background-color: white;
+    background-color: rgb(0, 255, 166);
     -webkit-animation: sandStream1 2s ease-in 0s infinite;
     animation: sandStream1 2s ease-in 0s infinite;
   }
@@ -471,7 +471,7 @@
     display: block;
     position: absolute;
     left: 6px;
-    background-color: white;
+    background-color: rgb(0, 255, 166);
     perspective: 500px;
   }
   

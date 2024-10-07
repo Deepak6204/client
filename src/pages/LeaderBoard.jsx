@@ -34,10 +34,10 @@ const LeaderBoard = () => {
   const compareUsersForRound = (round) => (a, b) => {
     const scoreA = a.scores?.[`round${round}`]?.score;
     const scoreB = b.scores?.[`round${round}`]?.score;
-    if (scoreA == undefined){
+    if (scoreA === undefined){
       return 1;
     }
-    else if(scoreB == undefined){
+    else if(scoreB === undefined){
       return -1;
     }
     if (scoreA !== undefined && scoreB !== undefined) {

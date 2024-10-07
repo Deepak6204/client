@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./css/event.css";
 import BugBounty from "../images/Bug-Bounty.webp";
 import { useNavigate } from 'react-router-dom';
+import { CiMenuFries } from "react-icons/ci";import { signInWithPopup, signOut } from 'firebase/auth'; 
+import Loader from '../components/Loader';
+
 
 
 
@@ -579,10 +582,13 @@ function Event() {
     }));
   };
   
+  const [loading, setLoading] = useState(false);
 
   const handleRoundSelection  = async (round) => {
+    setLoading(true)
     const firebaseId = localStorage.getItem('firebaseId')
-    const response = await fetch('https://server-jt5f.onrender.com/is_eligible', {
+    try {
+      const response = await fetch('https://server-jt5f.onrender.com/is_eligible', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -592,12 +598,15 @@ function Event() {
 
     const result = await response.json();
 
-    if(result.attempt == false){
+    if(result.attempt === false){
       setSelectedRound(null)
       return 0;
     }
     setSelectedRound(round);
     setShowRules(true);
+  } catch {
+    setLoading(false);
+  }
   };
 
   const handleOkClick = () => {
@@ -656,12 +665,15 @@ function Event() {
     } else {
     }
   }
+  
 
   return (
     <>
       <div className="app-container">
         {!selectedRound ? (
-          <div style={{ display: "flex", margin:"auto"}}>
+          
+          <div className="app-event-content" style={{ display: "flex", margin:"auto"}}>
+            {loading ? (<Loader/>) : (<>
             <div className="side-design">
               <div className="circle" />
               <div className="line" />
@@ -702,11 +714,14 @@ function Event() {
               <div className="circle" />
               <div className="line" />
             </div>
+            </>) }
           </div>
+          
         ) : (
-          <div style={{margin: "auto"}}>
+          <div  style={{margin: "auto"}}>
             {showRules ? (
-              <div
+              <div 
+                className="event-rule-content"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
@@ -770,6 +785,11 @@ function Event() {
               <div className="main-content">
                 <div className="question-list">
                   <h2>Questions</h2>
+                  <input type="checkbox" id="check" />
+                  <label htmlFor="check" className="checkbtn">
+                    <i className="fa fa-bars"><CiMenuFries style={{height: "8vh"}} /></i>
+                  </label>
+                  <div className="questions-wrapper">
                   {questions[selectedRound][language].map((question) => (
                     <button
                       key={question.id}
@@ -780,6 +800,7 @@ function Event() {
                       {question.id}
                     </button>
                   ))}
+                  </div>
                 </div>
 
                 {selectedQuestion && (
@@ -808,7 +829,7 @@ function Event() {
                     <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft)}>
                       Save & Next
                     </button>
-                    <div><button className="submit-button" onClick={handleFinalSubmit} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
+                    <div><button className="submit-button sumit-button-final" onClick={handleFinalSubmit} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
                   </div>
                 )}
               </div>

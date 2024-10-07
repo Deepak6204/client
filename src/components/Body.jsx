@@ -12,12 +12,12 @@ const Body = () => {
 
     const handleClick = () => {
         const isLoggedIn = localStorage.getItem('firebaseId');
-        if (isLoggedIn) {
-            navigate('/event');
-        } else {
-            navigate('/login_temp');
-        }
-        // navigate('/event');
+        // if (isLoggedIn) {
+        //     navigate('/event');
+        // } else {
+        //     navigate('/login_temp');
+        // }
+        navigate('/event');
     };
     return (
         <>

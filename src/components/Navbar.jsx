@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import checklogo from '../images/checklogo.png';
-import { FaUser } from "react-icons/fa";
-import { signInWithPopup, signOut } from 'firebase/auth'; 
+import { CiMenuFries } from "react-icons/ci";import { signInWithPopup, signOut } from 'firebase/auth'; 
 import { auth, provider } from '../firebaseConfig'; 
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { RiLoginCircleLine } from "react-icons/ri";
@@ -57,8 +56,8 @@ const Navbar = () => {
         <img src={checklogo} alt="checklogo" />
       </Link>
       <input type="checkbox" id="check" />
-      <label htmlFor="check" className="checkbtn">
-        <i className="fa fa-bars"></i>
+      <label htmlFor="check" className="checkbtn-nav">
+        <i className="fa fa-bars"><CiMenuFries style={{height: "8vh"}} /></i>
       </label>
       <ul style={{ marginBottom: "0" }}>
         <li><Link to="/problems">PROBLEMS</Link></li>
