@@ -623,7 +623,7 @@ function Event() {
     const firebaseId = localStorage.getItem('firebaseId')
     console.log("event firebaseId: ", firebaseId)
     try {
-      const response = await fetch('/handle-submit', {
+      const response = await fetch('https://server-jt5f.onrender.com/handle-submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

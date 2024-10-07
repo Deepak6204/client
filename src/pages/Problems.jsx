@@ -22,7 +22,7 @@ function Problems() {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axios.get("/problems");
+        const response = await axios.get("https://server-jt5f.onrender.com/problems");
         console.log(response.data)
         setProblemList(response.data.problems);
         setFilteredProblems(response.data.problems);
