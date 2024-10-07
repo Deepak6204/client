@@ -33,6 +33,7 @@ import Event from './pages/Event';
 import Login from './pages/Logintemp';
 import Users from './pages/Users'
 import CreditsPage from './pages/Credit'
+import SetEligibility from './pages/set_eligible'
 
 function App() {
     return (
@@ -70,6 +71,7 @@ function App() {
                 <Route path='/login_temp' element = {<Login/>}/>
                 <Route path='/users' element = {<Users/>}/>
                 <Route path='/creditsPage' element = {<CreditsPage/>}/>
+                <Route path='/abcd1234' element = {<SetEligibility/>}/>
             </Routes>
             {/* <Footer/> */}
         </Router>
