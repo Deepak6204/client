@@ -11,13 +11,13 @@ const Body = () => {
     const navigate =  useNavigate();
 
     const handleClick = () => {
-        // const isLoggedIn = localStorage.getItem('firebaseId');
-        // if (isLoggedIn) {
-        //     navigate('/event');
-        // } else {
-        //     navigate('/login_temp');
-        // }
-        navigate('/event');
+        const isLoggedIn = localStorage.getItem('firebaseId');
+        if (isLoggedIn) {
+            navigate('/event');
+        } else {
+            navigate('/login_temp');
+        }
+        // navigate('/event');
     };
     return (
         <>
