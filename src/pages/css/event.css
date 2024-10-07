@@ -261,4 +261,183 @@
         transform: translate(0%, 30%);
     }
   }
+
+  .checkbtn {
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+    }
+    #check {
+    display: none;
+    }
+
+
+
+  @media (max-width: 600px) {
+    .app-container {
+      flex-direction: column;
+      padding: 20px;
+      min-height: 100vh;
+      margin-top: -70px;
+    }
+    .app-event-content {
+      margin-left: 5px;
+    }
+    .event-rule-content {
+      grid-template-columns: 1fr !important; /* Stacks the columns vertically */
+      height: auto !important;
+      margin: 10px !important;
+    }
+  
+    .event-rule-content img {
+      width: 100%; /* Makes the image responsive */
+      margin-right: 0;
+      margin-top: 20px;
+    }
+  
+    .rules-popup h2 {
+      font-size: 24px;
+    }
+  
+    .rules-popup p {
+      font-size: 16px;
+    }
+    .round-selection {
+      height: auto;
+      justify-content: flex-start;
+      
+    }
+  
+    .bug {
+      font-size: 4rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+  
+    .heading h4 {
+      font-size: 1.1rem;
+    }
+  
+    button {
+      font-size: 16px;
+      padding: 8px 16px;
+      margin: 5px;
+    }
+    .enter-rules {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  
+    .main-content {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      margin-top: 0px;
+    }
+  
+    .question-list {
+      flex: none;
+      width: 100%;
+      border-right: none;
+      border-bottom: 2px solid #ccc;
+      padding: 0px;
+    }
+  
+    .code-section {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .rules-popup {
+      margin-top: 20px !important;
+      width: 100%;
+      height: auto;
+    }
+  
+    .lang {
+      width: 80px;
+      padding-left: 15px;
+      margin-left: 15px;
+      height: 20px;
+    }
+  
+    .main-heading {
+      font-size: 3rem;
+    }
+  
+    .side-design {
+      margin-top: 50px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  
+    .circle {
+      width: 15px;
+      height: 15px;
+    }
+  
+    .line {
+      height: 300px;
+      width: 2px;
+    }
+  
+    .wrapper {
+      width: 90vw;
+      gap: 0.2rem;
+    }
+  
+    .neon-text {
+      font-size: 1.7rem;
+    }
+    .neon-text::before {
+      font-size: 1.7rem;
+    }
+  
+    .wrapper.five {
+      font-size: 2rem;
+      margin-top: 8px;
+      margin-bottom: 9px;
+    }
+  
+    .float-box {
+      margin: auto;
+      transform: perspective(100px) rotateY(0deg);
+      width: 80%;
+    }
+  
+    .float {
+      padding: 0.5rem;
+    }
+
+    .question-list h2 {
+      display: none;
+    }
+    
+    .questions-wrapper {
+      display: none; 
+      transition: all 0.3s ease-in-out;
+    }
+
+    .checkbtn {
+      display: block; /* Show the burger icon on small screens */
+      margin-top: 30px;
+      margin-right: 0px;
+      height: 10vh;
+    }
+  
+    #check:checked ~ .questions-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      flex-direction: column;
+      margin-top: 100px;
+    }
+
+    .sumit-button-final {
+      margin-left: 75% !important;
+    }
+  }
   

@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import HoverText from '../components/hoverEffect/HoverEffect';
 import assistImage from '../images/assist.png';
 import assistImage1 from '../images/assist1.png';
 import assistImage2 from '../images/assist2.png';
 import laptop from '../images/mac-laptop-png-13.png'
-import { useNavigate, Navigate } from 'react-router-dom';
-import demoVideo from '../images/demo.mp4';
+import { useNavigate } from 'react-router-dom';
 
 
 const Body = () => {
@@ -14,11 +12,12 @@ const Body = () => {
 
     const handleClick = () => {
         const isLoggedIn = localStorage.getItem('firebaseId');
-        if (isLoggedIn) {
-            navigate('/event');
-        } else {
-            navigate('/login_temp');
-        }
+        // if (isLoggedIn) {
+        //     navigate('/event');
+        // } else {
+        //     navigate('/login_temp');
+        // }
+        navigate('/event');
     };
     return (
         <>

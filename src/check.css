@@ -27,8 +27,7 @@ body {
     
     }
     
-    .navbar{
-    
+    .navbar{  
     width: 100%;
     display: flex;
     align-items: center;
@@ -79,7 +78,7 @@ body {
       width: 100%;
     }
     
-    .checkbtn {
+    .checkbtn-nav {
     font-size: 30px;
     color: white;
     float: right;
@@ -450,6 +449,103 @@ body {
     /* opacity: 1; */
     }
 /***** End HOME PAGE *****/
+
+
+.fa-bars {
+  background-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .body-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 5%;
+  }
+  .logo1{
+    padding: 0px 10px;
+    width: 120px;
+  }
+  .container1 {
+    height: 100vh;
+  }
+  .checkbtn-nav {
+    display: block;
+    margin-top: -15px;
+    margin-right: 20px;
+    height: 10vh;
+  }
+  .logo img {
+    margin-top: -110px;
+    margin-left: -180px;
+  } 
+  .navbar {
+    height: 12vh;
+    width: 100%;
+    background: transparent;
+  }
+  .navbar ul {
+    position: absolute;
+    width: 100%;
+    height: 76vh;
+    /* margin-top: 0px; */
+    background-color: black;
+    top: 100px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+    /* display: none; */
+    padding-left: 0;
+  }
+  .navbar ul li  {
+    display: block;
+    margin: 50px 0;
+    line-height: 10px;
+  }
+  .navbar ul li a {
+    font-size: 18px;
+    text-align: center;
+  }
+  .navbar a:hover, a.active {
+    background: none;
+    color: rgb(0, 255, 166);
+  }
+  #check:checked ~ ul {
+    left: 0;
+  }
+  .headline {
+    font-size: 4vw;
+    font-weight: bold;
+    gap: 2rem;
+    /* display: none; */
+  }
+  .headline p{
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .headline h1 {
+    font-size: 3.2rem;
+
+  }
+  .headline h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+  }
+
+  .info {
+    display: none;
+  }
+  .about{
+    width: 100%;
+  }
+  .about .detail .box {
+    width: 86%;
+  }
+}
 
 
 

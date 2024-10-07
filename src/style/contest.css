@@ -146,7 +146,7 @@ button {
 }
 .active,
 #b3 {
-  background-color: #3E3E3E;
+  background-color: rgb(0, 255, 166);
   color: white;
 }
 
@@ -185,7 +185,7 @@ button {
 }
 
 /* responsive */
-@media (max-width:978px) {
+/* @media (max-width:978px) {
   #box1,
   #box2 {
     width: 100%;
@@ -232,4 +232,4 @@ button {
   .gray-background {
     height: 30vh;
   }
-}
+} */
