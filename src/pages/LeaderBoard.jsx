@@ -140,7 +140,7 @@ const LeaderBoard = () => {
 
             <h4 className="name">{user.name}</h4>
             <h4>{user.scores[`round${round}`].score}</h4>
-            <h4>{user.scores[`round${round}`].time}</h4>
+            <h4>{}{Math.floor(user.scores[`round${round}`].time/60)}min {user.scores[`round${round}`].time-(Math.floor(user.scores[`round${round}`].time/60)*60)}s</h4>
           </div>
         </div>
       ))}
