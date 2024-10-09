@@ -557,6 +557,8 @@ const rules = {
   ],
 };
 function Event() {
+  const [score, setscore] = useState(0)
+  const [timeTaken, settimeTaken] = useState(0)
   const [selectedRound, setSelectedRound] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedBugs, setSelectedBugs] = useState([]);
@@ -627,8 +629,20 @@ function Event() {
     setSelectedBugs(updatedBugs);
   };
 
-  const handleSubmit = async (selectedQuestion,elapsed_time) => {
+
+  const navigate =  useNavigate();
+
+  const handleSubmit = async (selectedQuestion,elapsed_time, final_submit) => {
+
     console.log(selectedRound);
+      if(final_submit){
+        const result = window.confirm("Are you sure want to submit?");
+
+      if(result) {
+        navigate('/leaderboard');
+      } else {
+      }
+    }
     const firebaseId = localStorage.getItem('firebaseId')
     console.log("event firebaseId: ", firebaseId)
     try {
@@ -637,11 +651,13 @@ function Event() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ selectedQuestion, selectedBugs , elapsed_time,selectedRound,firebaseId}),
+        body: JSON.stringify({ selectedQuestion, selectedBugs , elapsed_time,selectedRound,firebaseId,final_submit}),
       });
 
       const result = await response.json();
       console.log("Server response:", result);
+      setscore(result.score)
+      settimeTaken(result.elapsed_time)
       // alert(`You selected bugs on lines: ${result.selectedBugs.join(", ")}`);
       handleAnswer(selectedQuestion.id)
     } catch (error) {
@@ -654,17 +670,6 @@ function Event() {
       setSelectedQuestion(questions[selectedRound][language][selectedQuestion.id]);
       setSelectedBugs([]);
   };
-  const navigate =  useNavigate();
-
-  const handleFinalSubmit = (e) => {
-    e.preventDefault();
-    const result = window.confirm("Are you sure want to submit?");
-
-    if(result) {
-      navigate('/leaderboard');
-    } else {
-    }
-  }
   
 
   return (
