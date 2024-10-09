@@ -1576,13 +1576,10 @@ function Event() {
                         </div>
                       ))}
                     </div>
-                    
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
-                      <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft)}>
-                        Save & Next
-                      </button>
-                      <button className="submit-button sumit-button-final" onClick={handleFinalSubmit} style={{marginTop : "0", marginLeft : "0"}}>Submit</button>
-                    </div>
+                    <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,false)}>
+                      Save & Next
+                    </button>
+                    <div><button className="submit-button sumit-button-final" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,true)} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
                   </div>
                 )}
               </div>
