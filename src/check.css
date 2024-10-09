@@ -95,6 +95,7 @@ body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-top: 5%;
+      width: 100%;
     }
     
     .headline{
