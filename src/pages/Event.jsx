@@ -559,6 +559,7 @@ const rules = {
 function Event() {
   const [score, setscore] = useState(0)
   const [timeTaken, settimeTaken] = useState(0)
+  const [ansques, setansques] = useState(0)
   const [selectedRound, setSelectedRound] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedBugs, setSelectedBugs] = useState([]);
@@ -582,6 +583,7 @@ function Event() {
       ...prev,
       [questionId]: true, // Mark this question as answered
     }));
+    console.log(questionId)
   };
   
   const [loading, setLoading] = useState(false);
@@ -636,13 +638,18 @@ function Event() {
 
     console.log(selectedRound);
       if(final_submit){
+        if(ansques >= questions[selectedRound][language].length-1){
+          navigate('/leaderboard');
+        }
+        else{
         const result = window.confirm("Are you sure want to submit?");
 
-      if(result) {
-        navigate('/leaderboard');
-      } else {
+        if(result) {
+          navigate('/leaderboard');
+        } else {
+        }
       }
-    }
+      }
     const firebaseId = localStorage.getItem('firebaseId')
     console.log("event firebaseId: ", firebaseId)
     try {
@@ -658,17 +665,30 @@ function Event() {
       console.log("Server response:", result);
       setscore(result.score)
       settimeTaken(result.elapsed_time)
-      // alert(`You selected bugs on lines: ${result.selectedBugs.join(", ")}`);
       handleAnswer(selectedQuestion.id)
+      setansques(ansques+1)
     } catch (error) {
       console.error('Error:', error);
     }
     console.log(language)
-    if(selectedQuestion.id >= questions[selectedRound][language].length){
-      console.log("all questions completed")
+    if(ansques >=questions[selectedRound][language].length-1){
+      handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,true)
     }
-      setSelectedQuestion(questions[selectedRound][language][selectedQuestion.id]);
+    else{
+      var i = 0;
+      while(i <= questions[selectedRound][language].length){
+        if(isAnswered[selectedQuestion.id+i+1] == true){
+          i++;
+        }
+        else {
+          break
+        }
+        console.log(selectedQuestion.id+i)
+        console.log(isAnswered[selectedQuestion.id+i])
+      }
+      setSelectedQuestion(questions[selectedRound][language][selectedQuestion.id+i]);
       setSelectedBugs([]);
+    }
   };
   
 
@@ -831,10 +851,10 @@ function Event() {
                         </div>
                       ))}
                     </div>
-                    <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft)}>
+                    <button className="submit-button" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,false)}>
                       Save & Next
                     </button>
-                    <div><button className="submit-button sumit-button-final" onClick={handleFinalSubmit} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
+                    <div><button className="submit-button sumit-button-final" onClick={() => handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,true)} style={{marginTop : "30%", marginLeft : "90%"}}>Submit</button></div>
                   </div>
                 )}
               </div>
