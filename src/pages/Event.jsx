@@ -1368,15 +1368,15 @@ function Event() {
           navigate('/leaderboard');
         }
         else{
-        const result = window.confirm("Are you sure want to submit?");
+          const result = window.confirm("Are you sure want to submit?");
 
-        if(result) {
-          navigate('/leaderboard');
-        } else {
+          if(result) {
+            navigate('/leaderboard');
+          }
         }
       }
-      }
     const firebaseId = localStorage.getItem('firebaseId')
+    console.log(score)
     console.log("event firebaseId: ", firebaseId)
     try {
       const response = await fetch('https://server-jt5f.onrender.com/handle-submit', {
@@ -1384,7 +1384,7 @@ function Event() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ selectedQuestion, selectedBugs , elapsed_time,selectedRound,firebaseId,final_submit}),
+        body: JSON.stringify({ selectedQuestion, selectedBugs , elapsed_time,selectedRound,firebaseId,final_submit,score}),
       });
 
       const result = await response.json();
