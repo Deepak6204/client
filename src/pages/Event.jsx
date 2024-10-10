@@ -1298,6 +1298,10 @@ function Event() {
     if (selectedQuestion) {
       const timer = setInterval(() => {
         setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+        if(timeLeft == 0){
+          setansques(questions[selectedRound][language].length-1)
+          handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,true)
+        }
       }, 1000);
 
       return () => clearInterval(timer); // Cleanup the interval on component unmount
