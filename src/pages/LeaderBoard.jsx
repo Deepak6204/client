@@ -60,7 +60,6 @@ const LeaderBoard = () => {
 
   // Function to sort users based on the selected round
   const sortUsersByRound = (users, round) => {
-    console.log(users,round)
     return users.sort(compareUsersForRound(round));
   };
   // Fetch users when the component is mounted
@@ -74,7 +73,6 @@ const LeaderBoard = () => {
       })
       .then(data => {
         const sortedUsers = sortUsersByRound([...data.users], round);
-        console.log(sortedUsers)
         setUsers(sortedUsers);  // Set fetched data to users state
         setLoading(false);  // Set loading to false once data is fetched
       })

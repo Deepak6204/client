@@ -1313,7 +1313,6 @@ function Event() {
       ...prev,
       [questionId]: true, // Mark this question as answered
     }));
-    console.log(questionId)
   };
   
   const [loading, setLoading] = useState(false);
@@ -1366,7 +1365,6 @@ function Event() {
 
   const handleSubmit = async (selectedQuestion,elapsed_time, final_submit) => {
 
-    console.log(selectedRound);
       if(final_submit){
         if(ansques >= questions[selectedRound][language].length-1){
           navigate('/leaderboard');
@@ -1380,8 +1378,6 @@ function Event() {
         }
       }
     const firebaseId = localStorage.getItem('firebaseId')
-    console.log(score)
-    console.log("event firebaseId: ", firebaseId)
     try {
       const response = await fetch('https://server-jt5f.onrender.com/handle-submit', {
         method: 'POST',
@@ -1392,7 +1388,6 @@ function Event() {
       });
 
       const result = await response.json();
-      console.log("Server response:", result);
       setscore(result.score)
       settimeTaken(result.elapsed_time)
       handleAnswer(selectedQuestion.id)
@@ -1400,7 +1395,6 @@ function Event() {
     } catch (error) {
       console.error('Error:', error);
     }
-    console.log(language)
     if(ansques >=questions[selectedRound][language].length-1){
       handleSubmit(selectedQuestion,questions[selectedRound].time - timeLeft,true)
     }
@@ -1413,8 +1407,6 @@ function Event() {
         else {
           break
         }
-        console.log(selectedQuestion.id+i)
-        console.log(isAnswered[selectedQuestion.id+i])
       }
       setSelectedQuestion(questions[selectedRound][language][selectedQuestion.id+i]);
       setSelectedBugs([]);
